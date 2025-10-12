@@ -15,8 +15,7 @@ export const BalanceCard: React.FC = () => {
 
   return (
     <View>
-      <LinearGradient
-        colors={['#0DAD66', '#0DAF66']}
+      <View
         style={styles.cardContainer}
       >
         <View style={styles.toggleContainer}>
@@ -43,7 +42,7 @@ export const BalanceCard: React.FC = () => {
         <TouchableOpacity style={styles.addButton}>
           <Text style={styles.addButtonText}>Add Money</Text>
         </TouchableOpacity>
-      </LinearGradient>
+      </View>
 
       <Modal visible={modalVisible} transparent animationType="slide">
         <View style={styles.modalOverlay}>
@@ -80,6 +79,7 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     paddingHorizontal: 20,
     alignItems: 'center',
+    backgroundColor: '#0DAD66',
   },
   toggleContainer: {
     flexDirection: 'row',
@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 25,
     marginTop: 10,
+    marginBottom: 10,
   },
   addButtonText: {
     color: 'white',
