@@ -4,28 +4,26 @@ import { currencies, Currency } from '../data/currencies';
 import { Ionicons } from '@expo/vector-icons';
 import { usePathname, useRouter } from 'expo-router';
 
-export const BalanceCard: React.FC = () => {
+type BalanceCardProps = {
+  mode: "fiat" | "crypto";
+  onToggle: (mode: "fiat" | "crypto") => void;
+};
+
+export const BalanceCard: React.FC<BalanceCardProps> = ({mode, onToggle}) => {
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>(
     currencies[0]
   );
   const [modalVisible, setModalVisible] = useState(false);
 
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const isCryptoPage = pathname.startsWith("/crypto");
+  const isCryptoPage = mode === "crypto";
 
   const handleSelectCurrency = (currency: Currency) => {
     setSelectedCurrency(currency);
     setModalVisible(false);
   };
 
-  const handleToggle = (mode: "fiat" | "crypto") => {
-    if (mode === "fiat") {
-      router.replace("/");
-    } else {
-      router.replace("/crypto");
-    }
+  const handleToggle = (newMode: "fiat" | "crypto") => {
+    onToggle(newMode)
   };
 
   return (

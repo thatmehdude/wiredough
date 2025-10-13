@@ -7,17 +7,16 @@ import {
   View,
 } from "react-native";
 
-export const PortfolioCard = () => {
-  const router = useRouter();
-  const pathname = usePathname();
+type PortfolioCardProps = {
+  mode: "fiat" | "crypto";
+  onToggle: (mode: "fiat" | "crypto") => void;
+};
 
-  const isCryptoPage = pathname.startsWith("/crypto");
-  const handleToggle = (mode: "fiat" | "crypto") => {
-    if (mode === "fiat") {
-      router.replace("/");
-    } else {
-      router.replace("/crypto");
-    }
+export const PortfolioCard: React.FC<PortfolioCardProps> = ({mode, onToggle}) => {
+ 
+  const isCryptoPage = mode === "crypto";
+  const handleToggle = (newMode: "fiat" | "crypto") => {
+    onToggle(newMode)
   };
 
   return (
@@ -92,12 +91,12 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   card: {
-    width: "85%",
+    width: "95%",
     alignSelf: "center",
     borderRadius: 16,
     padding: 20,
     overflow: "hidden",
-    marginVertical: 20,
+    // marginVertical: 20,
     justifyContent: "space-between",
     backgroundColor: "#0C3A2D",
   },
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     right: 20,
-    backgroundColor: "rgba(255,255,255,0.15)",
+    backgroundColor: "white",
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 8,
