@@ -1,4 +1,5 @@
 import { BalanceCard } from "@/components/BalanceCard"
+import { PortfolioCard } from "@/components/PortfolioCard";
 import { ServiceCard } from "@/components/ServiceCard"
 import { ScrollView, StyleSheet, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -10,7 +11,8 @@ const CryptoHome = () => {
         style={styles.container}
         contentContainerStyle={{ paddingBottom: 24 }}
       >
-        <BalanceCard />
+        {/* <BalanceCard /> */}
+        <PortfolioCard />
         <View style={styles.grid}>
           <ServiceCard icon="bitcoin" label="Buy Crypto" color="#F7931A" />
           <ServiceCard icon="swap-horizontal" label="Swap" color="#007BFF" />

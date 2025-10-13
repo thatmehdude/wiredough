@@ -5,12 +5,14 @@ import { Ionicons } from '@expo/vector-icons';
 import { usePathname, useRouter } from 'expo-router';
 
 export const BalanceCard: React.FC = () => {
-  const [selectedCurrency, setSelectedCurrency] = useState<Currency>(currencies[0]);
+  const [selectedCurrency, setSelectedCurrency] = useState<Currency>(
+    currencies[0]
+  );
   const [modalVisible, setModalVisible] = useState(false);
 
   const router = useRouter();
   const pathname = usePathname();
-  
+
   const isCryptoPage = pathname.startsWith("/crypto");
 
   const handleSelectCurrency = (currency: Currency) => {
@@ -20,45 +22,62 @@ export const BalanceCard: React.FC = () => {
 
   const handleToggle = (mode: "fiat" | "crypto") => {
     if (mode === "fiat") {
-      router.replace("/")
+      router.replace("/");
+    } else {
+      router.replace("/crypto");
     }
-    else {
-      router.replace("/crypto")
-    }
-  }
+  };
 
   return (
     <View>
-      <View
-        style={styles.cardContainer}
-      >
+      <View style={styles.cardContainer}>
         <View style={styles.toggleContainer}>
-          <TouchableOpacity style={[styles.toggleButton, !isCryptoPage && styles.activeToggle]}
-          onPress={() => handleToggle("fiat")}>
-            <Text style={!isCryptoPage ? styles.toggleTextActive : styles.toggleText}>Fiat</Text>
+          <TouchableOpacity
+            style={[styles.toggleButton, !isCryptoPage && styles.activeToggle]}
+            onPress={() => handleToggle("fiat")}
+          >
+            <Text
+              style={
+                !isCryptoPage ? styles.toggleTextActive : styles.toggleText
+              }
+            >
+              Fiat
+            </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.toggleButton, isCryptoPage && styles.activeToggle]}
-          onPress={() => handleToggle("crypto")}>
-            <Text style={isCryptoPage ? styles.toggleTextActive : styles.toggleText}>Crypto</Text>
+          <TouchableOpacity
+            style={[styles.toggleButton, isCryptoPage && styles.activeToggle]}
+            onPress={() => handleToggle("crypto")}
+          >
+            <Text
+              style={isCryptoPage ? styles.toggleTextActive : styles.toggleText}
+            >
+              Crypto
+            </Text>
           </TouchableOpacity>
         </View>
 
         {!isCryptoPage && (
           <TouchableOpacity
-          style={styles.currencyContainer}
-          onPress={() => setModalVisible(true)}
-        >
-          <Text style={styles.flag}>{selectedCurrency.flag}</Text>
-          <Text style={styles.currencyText}>{selectedCurrency.name}</Text>
-          <Ionicons name="chevron-down" size={16} color="white" />
-        </TouchableOpacity>
+            style={styles.currencyContainer}
+            onPress={() => setModalVisible(true)}
+          >
+            <Text style={styles.flag}>{selectedCurrency.flag}</Text>
+            <Text style={styles.currencyText}>{selectedCurrency.name}</Text>
+            <Ionicons name="chevron-down" size={16} color="white" />
+          </TouchableOpacity>
         )}
 
-        <Text style={styles.balanceAmount}>{isCryptoPage ? "₿0.8451" : "$20,000"}</Text>
-        <Text style={styles.balanceLabel}>{isCryptoPage ? 'Portfolio value' : 'Available Balance'}</Text>
+        <Text style={styles.balanceAmount}>
+          {isCryptoPage ? "₿0.8451" : "$20,000"}
+        </Text>
+        <Text style={styles.balanceLabel}>
+          {isCryptoPage ? "Portfolio value" : "Available Balance"}
+        </Text>
 
         <TouchableOpacity style={styles.addButton}>
-          <Text style={styles.addButtonText}>{isCryptoPage ? 'Buy crypto' : 'Add Money'}</Text>
+          <Text style={styles.addButtonText}>
+            {isCryptoPage ? "Buy crypto" : "Add Money"}
+          </Text>
         </TouchableOpacity>
       </View>
 
