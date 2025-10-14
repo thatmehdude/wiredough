@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { ActionButton } from "./ActionButton";
+import { CryptoActionButton } from "./CryptoActionButton";
 
 type PortfolioCardProps = {
   mode: "fiat" | "crypto";
@@ -56,6 +58,12 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({mode, onToggle}) =>
           <Text style={styles.changeText}>15.3%</Text>
         </View>
       </ImageBackground>
+      <View style={styles.actionsRow}>
+        <CryptoActionButton icon="paper-plane-outline" label="Send" />
+        <CryptoActionButton icon="add" label="Add" />
+        <CryptoActionButton icon="card-outline" label="Top Up" />
+        <CryptoActionButton icon="swap-horizontal" label="Swap" />
+      </View>
     </View>
   );
 };
@@ -96,9 +104,10 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 20,
     overflow: "hidden",
-    // marginVertical: 20,
+    marginVertical: 20,
     justifyContent: "space-between",
     backgroundColor: "#0C3A2D",
+    // marginBottom: 20,
   },
   label: {
     color: "#FFFFFF",
@@ -123,5 +132,13 @@ const styles = StyleSheet.create({
   changeText: {
     color: "#00FF9D",
     fontWeight: "600",
+  },
+  actionsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    // paddingTop: 20,
+    // paddingBottom: 10,
+    paddingVertical: 10,
+    gap: 20,
   },
 });
