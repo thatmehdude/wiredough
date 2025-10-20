@@ -121,15 +121,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#00FF8B',
     borderRadius: 30,
     marginBottom: 15,
+    paddingVertical: 3,
+    paddingHorizontal: 6,
   },
   toggleButton: {
-    paddingVertical: 6,
-    paddingHorizontal: 20,
+    paddingVertical: 3,
+    paddingHorizontal: 11,
     borderRadius: 30,
   },
   toggleText: {
     color: '#13342B',
-    fontSize: 14,
+    fontSize: 10.57,
     fontWeight: '600',
   },
   activeToggle: {
@@ -138,6 +140,7 @@ const styles = StyleSheet.create({
   toggleTextActive: {
     color: '#FFFFFF',
     fontWeight: '600',
+    fontSize: 10.57,
   },
   currencyContainer: {
     flexDirection: 'row',
