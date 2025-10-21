@@ -1,16 +1,15 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Text, TouchableOpacity, StyleSheet, Image, ImageSourcePropType } from 'react-native';
 
 type Props = {
-  icon: keyof typeof Ionicons.glyphMap;
   label: string;
   color: string;
+  iconSource: ImageSourcePropType;
 }
 
-export const ActionButton: React.FC<Props> = ({ icon, label, color }) => (
+export const ActionButton: React.FC<Props> = ({ label, color, iconSource }) => (
   <TouchableOpacity style={styles.container}>
-    <Ionicons name={icon} size={24} color={color} />
+    <Image source={iconSource} style={styles.icon} resizeMode="contain" />
     <Text style={[styles.label, { color }]}>{label}</Text>
   </TouchableOpacity>
 );
@@ -20,8 +19,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
+  icon: {
+    width: 40,
+    height: 40,
+  },
   label: {
     marginTop: 4,
-    fontWeight: '600',
+    fontWeight: '500',
+    fontSize: 12,
   },
 });

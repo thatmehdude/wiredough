@@ -19,36 +19,79 @@ export default function Index() {
 
         {mode === "fiat" ? (
           <View style={styles.actionRow}>
-            <ActionButton icon="send" label="Send" color="#0CCE6B" />
+            <ActionButton
+              label="Send"
+              color="#979797"
+              iconSource={require("@/assets/images/send-icon.png")}
+            />
             <View style={styles.separator} />
-            <ActionButton icon="download-outline" label="Request" color="#007BFF" />
+            <ActionButton
+              label="Request"
+              color="#979797"
+              iconSource={require("@/assets/images/request-icon.png")}
+            />
             <View style={styles.separator} />
-            <ActionButton icon="card-outline" label="Card" color="#FF7A00" />
+            <ActionButton
+              label="Card"
+              color="#979797"
+              iconSource={require("@/assets/images/card-icon.png")}
+            />
           </View>
         ) : null}
 
         <View style={styles.grid}>
           {mode === "fiat" ? (
             <>
-              <ServiceCard icon="credit-card" label="Account and Card" color="#555" />
-              <ServiceCard icon="swap-horizontal" label="Transfer" color="#E74C3C" />
-              <ServiceCard icon="bank-transfer-out" label="Withdraw" color="#16A085" />
-              <ServiceCard icon="credit-card-multiple" label="Card" color="#FF7A00" />
+              <ServiceCard
+                icon="credit-card"
+                label="Account and Card"
+                color="#555"
+              />
+              <ServiceCard
+                icon="swap-horizontal"
+                label="Transfer"
+                color="#E74C3C"
+              />
+              <ServiceCard
+                icon="bank-transfer-out"
+                label="Withdraw"
+                color="#16A085"
+              />
+              <ServiceCard
+                icon="credit-card-multiple"
+                label="Card"
+                color="#FF7A00"
+              />
               <ServiceCard icon="account" label="Beneficiary" color="#C0392B" />
-              <ServiceCard icon="file-document-outline" label="Transaction report" color="#1E8449" />
+              <ServiceCard
+                icon="file-document-outline"
+                label="Transaction report"
+                color="#1E8449"
+              />
             </>
           ) : (
             <>
               <ServiceCard icon="bitcoin" label="Buy Crypto" color="#F7931A" />
-              <ServiceCard icon="swap-horizontal" label="Swap" color="#007BFF" />
+              <ServiceCard
+                icon="swap-horizontal"
+                label="Swap"
+                color="#007BFF"
+              />
               <ServiceCard icon="chart-line" label="Market" color="#0CCE6B" />
               <ServiceCard icon="wallet" label="Wallet" color="#555" />
-              <ServiceCard icon="bank-transfer" label="Withdraw" color="#E74C3C" />
-              <ServiceCard icon="file-document-outline" label="Reports" color="#16A085" />
+              <ServiceCard
+                icon="bank-transfer"
+                label="Withdraw"
+                color="#E74C3C"
+              />
+              <ServiceCard
+                icon="file-document-outline"
+                label="Reports"
+                color="#16A085"
+              />
             </>
           )}
         </View>
-        
       </ScrollView>
     </SafeAreaView>
   );
